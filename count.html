@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>이벤트 리스너로 장바구니 수량 변경 및 자동 합계 구하기</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+
+  <link rel="stylesheet" href="./scss/count.css" />
+  <script src="./js/count.js" defer></script>
+  <style>
+    body,
+    html {
+      font-size: 16px;
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    .wrap {}
+
+    .listWrap {
+      width: 80%;
+      margin: 2% auto 0;
+
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid #eee;
+      padding: 2%;
+    }
+
+    .listWrap .list {
+      width: calc(100% / 4 - 7.5px);
+      padding: 2%;
+      box-sizing: border-box;
+
+      border-radius: 5px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 0.4em rgba(0, 0, 0, 0.2);
+      transition: all 0.3s;
+    }
+
+    .listWrap .list:not(:nth-child(4n)) {
+      margin-right: 10px;
+    }
+
+    .list-thum {
+      height: 100px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .list-thum img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: auto;
+      height: auto;
+    }
+
+    .list-user {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .list-user span {
+      font-size: 1rem;
+    }
+
+    .list-user span:last-child {
+      margin-left: auto;
+      font-size: 12px;
+      color: cadetblue;
+    }
+
+    .list-email {
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-more {
+      border: 0;
+      box-shadow: 0;
+      display: block;
+      margin: 3% auto 2%;
+      padding: 1.5% 5%;
+      font-size: 15px;
+      text-transform: uppercase;
+      text-transform: capitalize;
+      font-weight: bold;
+      background: #6236ff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .btn-more+p {
+      text-align: center;
+    }
+
+    @media screen and (max-width:1024px) {
+      .listWrap {
+        width: 90%;
+      }
+
+      .list-user span {
+        font-size: 0.9rem;
+      }
+
+      .list-email {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media screen and (max-width:769px) {
+      .listWrap {
+        width: 95%;
+      }
+
+      .listWrap .list {
+        width: calc(100% / 3 - 7.5px);
+      }
+
+      .listWrap .list:nth-child(4n) {
+        margin-right: 10px;
+      }
+
+      .listWrap .list:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+
+    @media screen and (max-width:500px) {
+      .listWrap {
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+
+      .listWrap .list {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .listWrap .list:not(:nth-child(4n)),
+      .listWrap .list:nth-child(4n) {
+        margin-right: 0;
+      }
+
+      .list-email {
+        margin-bottom: 2%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div id="content">
+      <p>This is some content.</p>
+    </div>
+  </header>
+
+  <body>
+
+    <!-- 스크롤 되는 영역 -->
+    <div id="right_col">
+      <div id="right_col_inner">
+        <h1>Blue pill</h1>
+        <h2>Right - Screen split</h2>
+        <h3>Additional filler text</h3>
+        <h4>To demonstrate the effect</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mattis metus a purus tincidunt accumsan. Sed non
+          orci felis. Vivamus eros risus, luctus vel vulputate id, vestibulum vel augue. In vulputate egestas volutpat.
+          Donec in velit quis leo mollis porta. Suspendisse potenti. Etiam faucibus porttitor libero, in fermentum urna
+          pulvinar quis. Sed pretium tortor nisl. Pellentesque auctor elementum urna laoreet molestie. Donec et mauris
+          ante. Vestibulum malesuada lacinia nulla, vitae tristique erat interdum a. Suspendisse potenti. Cras magna
+          neque, dictum at vehicula lobortis, varius eget libero. Curabitur a lectus ac nulla pharetra porttitor vel at
+          magna. Donec neque risus, pellentesque at porta vitae.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mattis metus a purus tincidunt accumsan. Sed non
+          orci felis. Vivamus eros risus, luctus vel vulputate id, vestibulum vel augue. In vulputate egestas volutpat.
+          Donec in velit quis leo mollis porta. Suspendisse potenti. Etiam faucibus porttitor libero, in fermentum urna
+          pulvinar quis. Sed pretium tortor nisl. Pellentesque auctor elementum urna laoreet molestie. Donec et mauris
+          ante. Vestibulum malesuada lacinia nulla, vitae tristique erat interdum a. Suspendisse potenti.</p>
+      </div>
+    </div>
+    <div id="left_col">
+      <div id="background">
+        <div id="left_col_inner">
+          <h1>Red pill</h1>
+          <h2>Split screen - Left</h2>
+          <h3>A VERY Simple Method</h3>
+          <h4>Why?</h4>
+          <p>A modern method of having a two column<br />50% / 50% layout with different background images in<br />each
+            half and both columns the same height irrespective of content.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
+
+
+</body>
+
+</html>

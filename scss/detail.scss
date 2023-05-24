@@ -1,0 +1,861 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.wrap {
+  width: 1420px;
+  margin: 0 auto;
+}
+
+/* font-family: 'Noto Sans KR', sans-serif;
+font-family: 'Noto Serif', serif;
+font-family: 'Poppins', sans-serif; */
+
+.header {
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  width: 100%;
+  // height: 80px;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 88;
+  background-color: #fff;
+
+  .wrap {
+    overflow: hidden;
+    justify-content: space-around;
+    display: flex;
+    height: 80px;
+    line-height: 80px;
+
+    .logo {
+      width: 220px;
+      text-align: center;
+
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .gnb {
+      width: 740px;
+
+      ul {
+        display: flex;
+        justify-content: space-around;
+
+        li {
+          a {}
+        }
+      }
+    }
+
+    .header_right {
+      display: flex;
+      justify-content: space-around;
+      width: 430px;
+
+      .search {
+        position: relative;
+
+        input {
+          height: 25px;
+          border: none;
+          border-radius: 12px;
+          background-color: #fd8234;
+        }
+
+        a {
+          position: absolute;
+          right: 7px;
+          top: 3px;
+        }
+      }
+    }
+
+    .login {
+      a {}
+    }
+
+    .join {
+      a {}
+    }
+  }
+}
+
+.detail_full {
+  position: relative;
+  width: 1420px;height: calc(100vh - 80px);
+  margin: 0 auto;
+  // width: 1420px;
+  //  height: 2055px;
+  //  높이를 정해버리면 푸터가 어쩌구 저쩌구니까 좀 난처하네.
+  // overflow: hidden;
+  // position: relative;
+  display: flex;
+
+  .left_area {
+    width: 820px;
+    overflow-y: auto;
+
+    .left_top {
+      width: 100%;
+
+      .cont {
+        display: none;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    // float: left;
+
+    .left_bottom {
+      width: 820px;
+      height: auto;
+      margin-bottom: 100px;
+
+      //탭
+      .tab_menu {
+        position: relative;
+
+        .list {
+          overflow: hidden;
+
+          li {
+            width: 25%;
+            height:85px;
+            text-align: center;
+            line-height: 85px;
+            float: left;
+
+            // margin-right: 14px;
+            .btn {
+              font-size: 13px;
+              display: block;
+            }
+
+            .cont {
+              // height: 1150px;
+              overflow: hidden;
+              display: none;
+              position: absolute;
+              left: 0;
+              background-color: #f7f7f7;
+              // color: #fff;
+              // text-align: center;
+              width: 820px;
+              // height: 100px;
+              // line-height: 100px;
+              padding: 45px 35px;
+              box-sizing: border-box;
+
+              h1 {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 20px;
+              }
+
+              p {
+                font-size: 14px;
+                line-height: normal;
+                line-height: 24px;
+              }
+            }
+          }
+
+          li.notice_tab {
+            .cont {
+              text-align-last: left;
+
+              h1 {
+                font-size: 20px;
+                font-weight: bold;
+                border-bottom: 3px solid #000;
+              }
+
+              p {
+                text-align: left;
+              }
+            }
+          }
+
+          li.is_on {
+            border-bottom: 5px solid #261c13;
+            box-sizing: border-box;
+
+            .btn {
+              font-weight: bold;
+            }
+
+            .cont {
+              display: block;
+
+              img {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      // 탭
+      .review_image.swiper {
+        width: 100%;
+        height: 100%;
+
+        .swiper-wrapper {
+          margin: 0 auto;
+          width: 710px;
+
+          // overflow: hidden;
+          .swiper-slide {
+            width: 120px !important;
+            height: 120px;
+            margin-right: 10px;
+            text-align: center;
+            // font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+              display: block;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+
+      // 리뷰달기 시작
+
+      // 리뷰달기 끝
+    }
+  }
+
+  .left_area::-webkit-scrollbar {
+    display: none;
+  }
+
+  // overflow-y:auto;
+
+  .right_area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 600px;
+    height: 100%;
+    overflow-y: scroll;
+
+
+    .right_top {
+
+      // height: auto;
+      .product_info {
+        height: 210px;
+        border-bottom: 1px solid #e6e6e6;
+        box-sizing: border-box;
+        padding: 30px 65px;
+
+        // 난 그걸 해야해. scss를 쓰는 이유가 묶어서 막 어쩌고를 할 수 있는 것을 보여주기 위함인데 전혀 되지 않고 있음. 이따 다시 바꾸자!!
+        .text {
+          float: left;
+          width: 440px;
+
+          h2 {
+            font-size: 20px;
+            font-weight: bold;
+            padding-bottom: 5px;
+            box-sizing: border-box;
+          }
+
+          h1 {
+            font-size: 24px;
+            margin-bottom: 32px;
+            box-sizing: border-box;
+          }
+
+          b {
+            font-size: 20px;
+            font-weight: bold;
+          }
+        }
+
+        .share {
+          float: left;
+          width: 27px;
+          height: 27px;
+
+          // background-color: black;
+          a {
+            img {
+              width: 100%;
+            }
+
+            img:hover {
+              scale: 1.1;
+            }
+          }
+        }
+      }
+
+      .product_color {
+        height: 60px;
+        border-bottom: 1px solid #e6e6e6;
+
+        box-sizing: border-box;
+        padding: 18px 65px;
+
+        .tab_menu {
+          ul.list {
+            overflow: hidden;
+
+            li {
+              float: left;
+              margin-right: 10px;
+              width: 25px;
+              height: 25px;
+              background-color: red;
+              text-align: center;
+              line-height: 25px;
+              border-bottom: 1px solid #e6e6e6;
+
+              border-radius: 50%;
+            }
+
+            li:hover {
+              scale: 1.1;
+            }
+
+            li:nth-child(1) {
+              background-color: rgb(231, 205, 157);
+
+              a.btn {
+                display: block;
+                color: rgb(231, 205, 157);
+                font-size: 13px;
+              }
+            }
+
+            li:nth-child(2) {
+              background-color: rgb(235, 198, 213);
+
+              a.btn {
+                display: block;
+                color: rgb(235, 198, 213);
+                font-size: 13px;
+              }
+            }
+
+            li:nth-child(3) {
+              background-color: white;
+              margin-right: 20px;
+
+              a.btn {
+                display: block;
+                color: white;
+                font-size: 13px;
+              }
+            }
+
+            p {
+              font-size: 13px;
+              font-weight: bold;
+              line-height: 25px;
+            }
+          }
+        }
+      }
+
+      .additional_product {
+        height: 285px;
+        overflow: hidden;
+        border-bottom: 1px solid #e6e6e6;
+
+        box-sizing: border-box;
+        padding: 30px 65px;
+
+        p {
+          width: 100%;
+          margin-bottom: 13px;
+        }
+
+        .additional_wrap {
+          width: 470px;
+          height: 190px;
+
+          .additional_image {
+            float: left;
+            width: 190px;
+            height: 190px;
+            margin-right: 20px;
+
+            a {
+              img {
+                width: 100%;
+              }
+            }
+          }
+
+          .additional_text {
+            float: left;
+            width: calc(100% - 190px - 20px);
+            height: 190px;
+            padding-top: 130px;
+            box-sizing: border-box;
+
+            h1 {
+              font-size: 18px;
+              margin-bottom: 20px;
+            }
+
+            b {
+              font-size: 18px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      .delivery {
+        width: 600px;
+        height: 95px;
+        padding: 20px 65px;
+        border-bottom: 1px solid #e6e6e6;
+
+        box-sizing: border-box;
+        font-size: 13px;
+
+        div {
+          b {
+            display: block;
+            margin-right: 20px;
+            width: 53px;
+            margin-right: 10px;
+            float: left;
+
+            p {
+              display: inline-block;
+              width: 70px;
+              line-height: 20px;
+            }
+
+            #card_benefit {
+              display: none;
+
+              p {
+                float: left;
+              }
+            }
+          }
+        }
+      }
+
+      .count {
+        height: 85px;
+        padding: 20px 65px;
+        border-bottom: 1px solid #e6e6e6;
+
+        box-sizing: border-box;
+
+        display: flex;
+
+        form {
+          display: flex;
+
+          .basketdiv {
+
+            // 구조를 좀 바꿔볼까 생각 중! 다 하고 구조 잡자
+            .row {
+              display: flex;
+
+              .subdiv {
+                display: flex;
+
+                .check {
+                  input {
+                    display: none;
+                  }
+                }
+
+                .basketprice {
+                  display: none;
+                }
+
+                .sum {
+                  display: none;
+                }
+
+                .basketcmd {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .buy_cart {
+        height: 85px;
+        border-bottom: 1px solid #e6e6e6;
+
+        box-sizing: border-box;
+
+        .buy,
+        .cart {
+          width: 50%;
+          float: left;
+          text-align: center;
+          line-height: 85px;
+
+          a {
+            display: block;
+          }
+        }
+
+        .buy {
+          background-color: #efe8da;
+        }
+
+        .cart {
+          background-color: #fff;
+        }
+
+        .buy:hover,
+        .cart:hover {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .right_bottom {
+      .accordion {
+        background-color: #ffffff;
+        cursor: pointer;
+        padding: 16px;
+        width: 100%;
+        height: 85px;
+        outline: none;
+        border: none;
+        text-align: left;
+        font-size: 16px;
+        transition: 0.4s;
+
+        &:after {
+          content: "\f067";
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          margin-left: 5px;
+          float: right;
+        }
+
+        &:hover {
+          background-color: #f5f5f5;
+          font-weight: bold;
+        }
+      }
+
+      .active {
+        background-color: #f5f5f5;
+        font-weight: bold;
+
+        &:after {
+          content: "\f068";
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+        }
+      }
+
+      .panel {
+        padding: 0 16px;
+        background-color: #ffffff;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        border-bottom: 1px solid #eeeeee;
+      }
+    }
+  }
+
+  // 스크롤바 숨김
+  .right_area::-webkit-scrollbar {
+    display: none;
+  }
+}
+.quick {
+  width: 50px;
+  height: 100px;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  z-index: 100;
+
+  .shopping_history {
+    #history_btn {
+      display: none;
+    }
+
+    #history_btn:checked~.history_list {
+      display: none;
+    }
+
+    #history_btn~.history_list {
+      display: block;
+    }
+
+    label {
+      img {}
+    }
+
+    .history_list {}
+  }
+
+  .top_btn {
+    img {}
+  }
+
+  .history_list {
+    //display: none;
+    background-color: red;
+    position: fixed;
+    top: 80px;
+    right: 0;
+    width: 150px;
+    height: 300px;
+  }
+}
+
+.footer {
+  width: 1420px;
+  margin: 0 auto;
+  height: 550px;
+  background-color: #261c13;
+  color: white;
+  padding: 72px 100px;
+  box-sizing: border-box;
+
+  .footer_left {
+    float: left;
+
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    strong {
+      display: inline-block;
+      color: #fd8234;
+      font-size: 30px;
+      font-weight: bold;
+      margin: 16px 0;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .footer_logo {
+      width: 116px;
+      height: 135px;
+      margin-top: 175px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .copyright {
+      margin-top: 25px;
+      font-size: 11px;
+    }
+  }
+
+  .footer_right {
+    float: right;
+    margin-bottom: 102px;
+
+    .footer_instagram {
+      width: 350px;
+      height: 40px;
+      margin-bottom: 20px;
+
+      i {
+        display: block;
+        font-size: 45px;
+        float: right;
+        // width: 100%;height: 100%;
+      }
+    }
+
+    .footer_instagram:hover {
+      scale: 1.1;
+    }
+
+    .footer_right_middle {
+      display: flex;
+      width: 350px;
+      // height: 125px;
+      overflow: hidden;
+      margin-bottom: 40px;
+
+      div {
+        li {
+          a {
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 24px;
+          }
+        }
+
+        li:first-child {
+          margin-bottom: 22px;
+
+          a {
+            color: #f8f8f8;
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .footer_info {
+        float: left;
+        margin-right: 55px;
+
+        ul {
+          li {
+            a {}
+          }
+        }
+      }
+
+      .footer_support {
+        margin-right: 55px;
+      }
+
+      .footer_contact {
+        ul {
+          li {
+            a {}
+          }
+        }
+      }
+    }
+
+    .business_info {
+      width: 370px;
+
+      // 이건 내일 다시 보자구요!!!
+      #business_info_btn:checked~.business_info_open_btn {
+        display: block;
+      }
+
+      #business_info_btn:checked~.business_info_close_btn {
+        display: none;
+      }
+
+      #business_info_btn:checked~.business_info_detail {
+        display: none;
+      }
+
+      #business_info_btn~.business_info_close_btn {
+        display: block;
+      }
+
+      #business_info_btn~.business_info_open_btn {
+        display: none;
+      }
+
+      #business_info_btn~.business_info_detail {
+        display: block;
+      }
+
+      input {
+        display: none;
+      }
+
+      label {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 15px;
+
+        i {
+          margin-left: 8px;
+        }
+      }
+
+      .business_info_detail {
+        // display: none;
+        width: 350px;
+        height: 75px;
+        border: 1px solid white;
+        padding-left: 8px;
+        box-sizing: border-box;
+
+        div {
+          p {
+            font-size: 10px;
+            line-height: 17px;
+          }
+
+          .bar {
+            // display: block;
+            width: 1px;
+            height: 12px;
+            // line-height: 13px;
+            background-color: #fff;
+            margin: 3px 8px;
+            box-sizing: border-box;
+          }
+        }
+
+        .detail_first,
+        .detail_third,
+        .detail_fourth {
+          p {
+            float: left;
+
+            a {
+              color: white;
+            }
+          }
+
+          p:last-child {}
+
+          overflow: hidden;
+        }
+
+        .detail_second {
+          margin-bottom: 2px;
+
+          p {}
+        }
+
+        .detail_third,
+        .detail_fourth {}
+      }
+    }
+  }
+}
